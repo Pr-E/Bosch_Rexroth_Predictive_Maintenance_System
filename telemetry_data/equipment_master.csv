@@ -1,0 +1,13 @@
+machine_id,installation_date,total_operating_hours,fluid_type,last_filter_change_date,maintenance_priority
+HPU_01,13/03/2023,14012,mineral_oil,19/12/2023,Low
+HPU_02,28/10/2022,9572,mineral_oil,24/11/2023,Medium
+HPU_03,23/03/2023,7848,mineral_oil,14/10/2023,Low
+HPU_04,29/04/2022,5976,mineral_oil,18/12/2023,High
+HPU_05,01/04/2023,12623,mineral_oil,25/11/2023,Low
+HPU_06,03/02/2022,5869,mineral_oil,06/10/2023,High
+HPU_07,14/12/2022,18746,synthetic,14/10/2023,Medium
+HPU_08,22/11/2022,24309,synthetic,26/10/2023,Medium
+HPU_09,24/09/2022,10231,synthetic,22/12/2023,Medium
+HPU_10,29/04/2022,14105,synthetic,09/11/2023,High
+
+
