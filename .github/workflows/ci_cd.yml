@@ -24,6 +24,13 @@ jobs:
           echo "MLFLOW_TRACKING_USERNAME=${{ secrets.MLFLOW_TOKEN }}" >> $GITHUB_ENV
           echo "MLFLOW_TRACKING_PASSWORD=${{ secrets.MLFLOW_TOKEN }}" >> $GITHUB_ENV
 
+
+      # TEST
+
+      - name: Debug AWS_REGION
+        run: echo "Region is [${{ secrets.AWS_REGION }}]"
+
+        
       # 3. Configure AWS credentials (GitHub → ECR push)
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
