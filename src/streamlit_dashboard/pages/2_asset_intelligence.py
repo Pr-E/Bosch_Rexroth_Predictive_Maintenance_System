@@ -15,7 +15,7 @@ from utils.ui_components import (
 
 
 st.set_page_config(
-    page_title="Asset Intelligence",
+    page_title="Asset Predictive Intelligence",
     layout="wide"
 )
 
@@ -150,27 +150,60 @@ if run_prediction:
 
             narrative_card(pattern["interpretation"])
 
+        # ======================================================
+        # MAINTENANCE CONTEXT
+        # ======================================================
+
         st.markdown("<br>", unsafe_allow_html=True)
 
-        m1, m2, m3 = st.columns(3)
+        m1, m2, m3, m4 = st.columns(4)
+
+        equipment_age_days = float(
+            result["equipment_age_days"]
+        )
+
+        filter_change_days = float(
+            result["days_since_filter_change"]
+        )
+
+        last_maintenance_days = float(
+            result["days_since_last_maintenance"]
+        )
+
+        downtime_hours = float(
+            result["cumulative_downtime_exposure"]
+        )
+
+        downtime_days = downtime_hours / 24
 
         with m1:
             kpi_card(
                 "Equipment Age",
-                f"{int(result['equipment_age_days'])} days"
+                f"{int(equipment_age_days)} days",
+                f"{equipment_age_days / 30:.1f} months"
             )
 
         with m2:
             kpi_card(
                 "Filter Change",
-                f"{int(result['days_since_filter_change'])} days"
+                f"{int(filter_change_days)} days",
+                f"{filter_change_days / 30:.1f} months"
             )
 
         with m3:
             kpi_card(
                 "Last Maintenance",
-                f"{int(result['days_since_last_maintenance'])} days"
+                f"{int(last_maintenance_days)} days",
+                f"{last_maintenance_days / 30:.1f} months"
             )
+
+        with m4:
+            kpi_card(
+                "Downtime Exposure",
+                f"{downtime_days:.1f} days",
+                f"{int(downtime_hours):,} hrs"
+            )    
+            
 
         st.markdown("<br>", unsafe_allow_html=True)
 

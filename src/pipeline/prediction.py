@@ -430,6 +430,13 @@ class PredictionService:
             ]
         )
 
+        cumulative_downtime_exposure = float(
+
+            latest_machine_record[
+                "cumulative_downtime_exposure"
+            ]
+        )
+
         if machine_df.empty:
             raise ValueError(f"Machine {machine_id} not found")
 
@@ -567,6 +574,7 @@ class PredictionService:
             "equipment_age_days": equipment_age_days,
             "days_since_filter_change": days_since_filter_change,
             "days_since_last_maintenance": days_since_last_maintenance,
+            "cumulative_downtime_exposure": cumulative_downtime_exposure,
             "top_drivers": top_drivers,
             "machine_health_score": machine_health_score,
             "priority": asset_condition["priority"],

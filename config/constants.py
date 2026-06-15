@@ -231,6 +231,15 @@ FEATURE_METADATA_KEY = (
     "feature_store/features_metadata.json"
 )
 
+
+# UNCOMMENT TO USE CLOUD BASED MLFLOW
+
+#DAGSHUB_URL = "https://dagshub.com"
+#REPO_OWNER = "ejirogoro27"
+#REPO_NAME = "Bosch_Rexroth_Predictive_Maintenance_System"    
+
+
+
 # ==========================================================
 # AUTO CREATE DIRECTORIES
 # ==========================================================
@@ -265,9 +274,4 @@ for directory in DIRECTORIES:
         exist_ok=True
     )
 
-
-
-DAGSHUB_URL = "https://dagshub.com"
-REPO_OWNER = "ejirogoro27"
-REPO_NAME = "Bosch_Rexroth_Predictive_Maintenance_System"    
 

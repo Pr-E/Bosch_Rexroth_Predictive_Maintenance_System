@@ -87,6 +87,8 @@ class PredictionResponse(BaseModel):
 
     days_since_last_maintenance: float
 
+    cumulative_downtime_exposure: float
+
     top_drivers: (
         List[DriverExplanation]
     )
