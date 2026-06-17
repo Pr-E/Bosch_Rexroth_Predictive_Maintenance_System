@@ -6,25 +6,21 @@ from config.constants import MLFLOW_EXPERIMENT_NAME
 
 load_dotenv(override=True)
 
-# ------------------------------------------------------------------
-# MLflow Configuration (DagsHub)
-# ------------------------------------------------------------------
+# CLOUD BASED MLFLOW SETUP
+
 def setup_mlflow():
-    token = os.getenv("MLFLOW_TOKEN")
-    if not token:
-        raise EnvironmentError("MLFLOW_TOKEN not found.")
+    dagshub_token = os.getenv("MLFLOW_TOKEN")
+    if not dagshub_token:
+        raise EnvironmentError("The Mlflow token cant't be accessed...")
+    
+    os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+    os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 
-    os.environ["MLFLOW_TRACKING_USERNAME"] = token
-    os.environ["MLFLOW_TRACKING_PASSWORD"] = token
+    repo_owner = "ejirogoro27"
+    repo_name = "Bosch_Rexroth_Predictive_Maintenance_System" 
 
-    dagshub.init(
-        repo_owner="ejirogoro27",
-        repo_name="Bosch_Rexroth_Predictive_Maintenance_System",
-        mlflow=True
-    )
-
-    mlflow.set_tracking_uri(
-        "https://dagshub.com/ejirogoro27/Bosch_Rexroth_Predictive_Maintenance_System.mlflow"
-    )
-
+    tracking_uri = f"https://dagshub.com/{repo_owner}/{repo_name}.mlflow"
+    mlflow.set_tracking_uri(tracking_uri)
     mlflow.set_experiment(MLFLOW_EXPERIMENT_NAME)
+
+  
