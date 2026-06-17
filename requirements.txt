@@ -19,5 +19,5 @@ ipykernel
 boto3
 from-root
 logging
--e.
+-e .
 
