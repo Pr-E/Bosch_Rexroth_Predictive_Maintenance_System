@@ -18,33 +18,17 @@ BASE_DIR = os.path.dirname(
 # SOURCE DATA
 # ==========================================================
 
-TELEMETRY_DATA_DIR = os.path.join(
+INPUT_DATA_PATH = os.path.join(
     BASE_DIR,
     "telemetry_data"
 )
 
-TELEMETRY_DATA_PATH = os.path.join(
-    TELEMETRY_DATA_DIR,
-    "sensor_telemetry.csv"
-)
-
-MAINTENANCE_DATA_PATH = os.path.join(
-    TELEMETRY_DATA_DIR,
-    "maintenance_log.csv"
-)
-
-FAILURE_LABELS_PATH = os.path.join(
-    TELEMETRY_DATA_DIR,
-    "failure_labels.csv"
-)
-
-EQUIPMENT_MASTER_PATH = os.path.join(
-    TELEMETRY_DATA_DIR,
-    "equipment_master.csv"
-)
+SENSOR_TELEMETRY_PATH = f"{INPUT_DATA_PATH}/sensor_telemetry.csv"
+MAINTENANCE_LOG_PATH = f"{INPUT_DATA_PATH}/maintenance_log.csv"
+FAILURE_LABELS_PATH = f"{INPUT_DATA_PATH}/failure_labels.csv"
+EQUIPMENT_MASTER_PATH = f"{INPUT_DATA_PATH}/equipment_master.csv"
 
 
-# INPUT_DATA_PATH = os.path.join(BASE_DIR,  "telemetry_data", "sensor_telemetry.csv") 
 # ==========================================================
 # DATASETS
 # ==========================================================
@@ -231,16 +215,7 @@ FEATURE_DATA_KEY = (
 
 FEATURE_METADATA_KEY = (
     "feature_store/features_metadata.json"
-)
-
-
-# UNCOMMENT TO USE CLOUD BASED MLFLOW
-
-# DAGSHUB_URL = "https://dagshub.com"
-# REPO_OWNER = "ejirogoro27"
-# REPO_NAME = "Bosch_Rexroth_Predictive_Maintenance_System"    
-
-
+)   
 
 # ==========================================================
 # AUTO CREATE DIRECTORIES

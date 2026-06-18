@@ -1,8 +1,9 @@
 import requests
 
 
-BASE_URL = "http://localhost:8000"
+#BASE_URL = "http://localhost:8000"
 
+BASE_URL = "http://3.87.72.44:8000"
 
 def predict_asset(payload: dict) -> dict:
     response = requests.post(
@@ -32,3 +33,6 @@ def retrain_model() -> dict:
     )
     response.raise_for_status()
     return response.json()
+
+
+
