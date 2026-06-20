@@ -17,16 +17,12 @@ BASE_DIR = os.path.dirname(
 # ==========================================================
 # SOURCE DATA
 # ==========================================================
+INPUT_DATA_PATH = os.path.join(BASE_DIR, "telemetry_data")
 
-INPUT_DATA_PATH = os.path.join(
-    BASE_DIR,
-    "telemetry_data"
-)
-
-SENSOR_TELEMETRY_PATH = f"{INPUT_DATA_PATH}/sensor_telemetry.csv"
-MAINTENANCE_LOG_PATH = f"{INPUT_DATA_PATH}/maintenance_log.csv"
-FAILURE_LABELS_PATH = f"{INPUT_DATA_PATH}/failure_labels.csv"
-EQUIPMENT_MASTER_PATH = f"{INPUT_DATA_PATH}/equipment_master.csv"
+SENSOR_TELEMETRY_PATH = os.path.join(INPUT_DATA_PATH, "sensor_telemetry.csv")
+MAINTENANCE_LOG_PATH = os.path.join(INPUT_DATA_PATH, "maintenance_log.csv")
+FAILURE_LABELS_PATH = os.path.join(INPUT_DATA_PATH, "failure_labels.csv")
+EQUIPMENT_MASTER_PATH = os.path.join(INPUT_DATA_PATH, "equipment_master.csv")
 
 
 # ==========================================================
