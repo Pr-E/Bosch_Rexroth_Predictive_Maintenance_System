@@ -4,9 +4,9 @@
 
 ### Overview
 
-This project presents an end-to-end machine learning framework for predicting Remaining Useful Life (RUL) in industrial hydraulic systems while providing transparent explanations of degradation behaviour and operational risk.
+The Hydraulic Predictive Maintenance Intelligence System is a production-ready end-to-end machine learning and MLOps platform designed to predict Remaining Useful Life (RUL), identify degradation patterns, explain failure mechanisms, and support proactive maintenance decision-making for industrial hydraulic assets.
 
-The objective is to support maintenance planning by combining predictive modelling, explainable AI, and degradation pattern assessment into a unified decision-support workflow.
+The platform transforms raw telemetry sensor data into actionable maintenance intelligence through machine learning, explainable AI, failure pattern recognition, and cloud-based deployment.
 
 Rather than relying solely on failure prediction, the system is designed to help engineers understand:
 
@@ -18,114 +18,77 @@ Rather than relying solely on failure prediction, the system is designed to help
 
 ---
 
-## Problem Statement
+## Business Problem
 
-Hydraulic assets operate under varying environmental, operational, and maintenance conditions. Over time, factors such as thermal stress, vibration exposure, pressure imbalance, equipment ageing, and maintenance delays contribute to progressive degradation.
+Industrial hydraulic systems are subject to continuous wear caused by thermal stress, vibration exposure, pressure imbalance, equipment ageing, and maintenance delays.
 
-Traditional maintenance approaches often rely on fixed servicing schedules or reactive interventions, which may result in:
+Traditional maintenance approaches often result in:
 
-* Unplanned downtime
-* Increased maintenance costs
-* Reduced equipment availability
-* Inefficient resource allocation
+- Unplanned downtime
+- Increased maintenance costs
+- Reduced asset availability
+- Reactive maintenance practices
+- Limited visibility into degradation progression
 
-This project explores how machine learning can be used to support condition-based maintenance planning through Remaining Useful Life estimation and explainable degradation analysis.
+This project aims to enable condition-based maintenance through predictive analytics and explainable AI.
+
 
 ---
+
 
 ## Solution Overview
 
-The system consists of four integrated analytical layers.
+The platform consists of five integrated intelligence layers:
 
 ### 1. Data Engineering
 
-Multiple operational and maintenance data sources were integrated to create a unified asset lifecycle dataset.
+- Multi-source data ingestion
+- Data validation and cleaning
+- Temporal alignment
+- Asset-level aggregation
+- Feature store creation
 
-Key activities included:
-
-* Data ingestion
-* Timestamp standardisation
-* Asset-level aggregation
-* Data quality validation
-* Temporal alignment of operational records
-
----
 
 ### 2. Feature Engineering
 
-Domain-informed features were developed to represent operational behaviour, maintenance history, and degradation progression.
+35 degradation-focused features were engineered across:
 
-Feature categories include:
+- Operational signals
+- Maintenance history
+- Degradation indicators
+- Temporal behaviour patterns
 
-#### Operational Features
+Key engineered features include:
 
-* Pressure
-* Temperature
-* Flow Rate
-* Pump Speed
+- Cumulative Vibration Exposure
+- Thermal Stress Accumulation
+- Pressure-Flow Ratio
+- Equipment Age
+- Maintenance Intervals
+- Downtime Exposure
 
-#### Maintenance Features
-
-* Equipment Age
-* Days Since Last Maintenance
-* Days Since Filter Change
-
-#### Degradation Features
-
-* Thermal Stress Accumulation
-* Cumulative Vibration Exposure
-* Downtime Exposure
-* Pressure-Flow Ratio
-* Thermal-Hydraulic Stress
-
-#### Temporal Features
-
-* Lag Variables
-* Rolling Statistics
-* Behavioural Trend Indicators
-
----
 
 ### 3. Remaining Useful Life Prediction
 
-Gradient boosting regression models were evaluated for Remaining Useful Life estimation.
+Models evaluated:
 
-Models explored:
+- XGBoost
+- LightGBM
 
-* XGBoost
-* LightGBM
+Final Production Model:
 
-Evaluation metrics:
+- LightGBM Regressor
 
-* Mean Absolute Error (MAE)
-* Root Mean Squared Error (RMSE)
-* R² Score
+Performance:
 
-The final modelling framework demonstrated strong predictive performance across multiple stages of asset degradation while maintaining temporal validation integrity.
+| Metric | Result |
+|----------|----------|
+| R² Score | 0.902 |
+| MAE | 14.24 Hours |
+| Features | 35 |
 
----
 
-### 4. Explainable AI and Maintenance Intelligence
-
-SHAP (SHapley Additive Explanations) was incorporated to improve model transparency and support engineering interpretation.
-
-For each prediction, the system identifies:
-
-* Key degradation drivers
-* Relative feature influence
-* Asset-specific explanatory insights
-
-Recurring contributors to reduced asset life included:
-
-* Thermal stress accumulation
-* Vibration exposure
-* Hydraulic pressure-flow imbalance
-* Equipment ageing
-* Maintenance interval extension
-
----
-
-### 5. Prognostic Intelligence Layer
+### 4. Failure Pattern Intelligence
 
 The system extends beyond RUL prediction by introducing:
 
@@ -174,6 +137,24 @@ Contamination: 13%
 ---
 
 
+### 5. Explainable AI
+
+SHAP explainability provides:
+
+- Feature attribution
+- Local prediction explanations
+- Maintenance intelligence
+- Executive-level transparency
+
+Common degradation drivers:
+
+- Vibration Exposure
+- Thermal Stress Accumulation
+- Maintenance Delays
+- Pressure-Flow Imbalance
+- Downtime Exposure
+
+---
 
 ### Consistent Degradation Drivers
 
@@ -187,98 +168,136 @@ Across validation samples, the most influential degradation indicators were:
 
 These findings align with known industrial asset degradation mechanisms.
 
+
+## Executive Intelligence Outputs
+
+For every prediction, the system generates:
+
+- Remaining Useful Life (Hours & Days)
+- Machine Health Score
+- Risk Classification
+- Failure Pattern Recognition
+- Failure Progression Stage
+- SHAP Explainability
+- Maintenance Recommendations
+- Executive Summary Narrative
+
 ---
 
 ## Technology Stack
 
-### Data Processing
+### Development
 
-* Python
-* Pandas
-* NumPy
+- Python
+- VS Code
+- Git
+
+### Data Engineering
+
+- Pandas
+- NumPy
 
 ### Machine Learning
 
-* XGBoost
-* LightGBM
-* Scikit-learn
+- LightGBM
+- XGBoost
+- Scikit-Learn
 
 ### Explainable AI
 
-* SHAP
+- SHAP
 
-### Visualisation
+### API Layer
 
-* Matplotlib
+- FastAPI
+- Pydantic
 
-### Deployment
+### Dashboard
 
-* MLFLOW Tracking
-* FastAPI
-* Docker
-* GitHub Actions
-* AWS Services
+- Streamlit
+- Plotly
+
+### MLOps
+
+- MLflow
+- DagsHub
+
+### Cloud & Deployment
+
+- Docker
+- GitHub Actions
+- Amazon S3
+- AWS EC2
+- AWS ECR
 
 ---
 
-## Repository Structure
+## Production Workflow
 
 ```text
-bosch-rexroth-predictive-maintenance/
-
-├── data/
-├── notebooks/
-├── src/
-│   ├── features/
-│   ├── modelling/
-│   ├── explainability/
-│   ├── intelligence/
-│   └── api/
-├── models/
-├── tests/
-├── reports/
-├── Dockerfile
-├── requirements.txt
-└── README.md
+Sensor Data
+    ↓
+Feature Engineering
+    ↓
+LightGBM RUL Prediction
+    ↓
+Failure Pattern Recognition
+    ↓
+SHAP Explainability
+    ↓
+Executive Intelligence
+    ↓
+Maintenance Recommendations
+    ↓
+Streamlit Dashboard
 ```
 
 ---
 
-## Current Status
+## Project Results
 
-Completed
-
-* Data ingestion and integration
-* Feature engineering
-* Remaining Useful Life modelling
-* Explainable AI framework
-* Degradation pattern assessment
-* Failure progression framework
-* Validation and performance evaluation
-
-In Progress
-
-* Production API development
-* Containerisation
-* CI/CD automation
-* Cloud deployment
+- 126,585 telemetry records processed
+- 35 engineered degradation features
+- 4 failure modes modelled
+- R² Score: 0.902
+- MAE: 14.24 Hours
+- Production-ready API deployed on AWS
+- End-to-end MLOps pipeline implemented
+- Explainable AI integrated using SHAP
 
 ---
 
-## Future Enhancements
+## Project Status
 
-* Real-time telemetry integration
-* Fleet-level health monitoring
-* Maintenance scheduling optimisation
+### Completed
 
----
+- Data Engineering Pipeline
+- Feature Engineering Pipeline
+- RUL Prediction Engine
+- Failure Pattern Intelligence Engine
+- SHAP Explainability Layer
+- FastAPI Prediction Service
+- Streamlit Dashboard
+- MLflow Model Registry
+- Amazon S3 Integration
+- Docker Containerization
+- GitHub Actions CI/CD
+- AWS Cloud Deployment
+
+--- 
 
 ## Author
 
-Priscilla Ejiro
+**Priscillia Eboe-Ogoro**
 
 Data Scientist | Machine Learning Engineer
 
-Interests: Explainable AI, Predictive Maintenance, Reliability Engineering, Healthcare & Industrial Analytics
+Interests:
 
+- Explainable AI
+- Predictive Maintenance
+- Industrial Analytics
+- Responsible AI
+- Healthcare Data Science
+- MLOps & Cloud Engineering
 
