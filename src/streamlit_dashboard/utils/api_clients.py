@@ -1,17 +1,13 @@
-import requests
 import os
+import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 
 BASE_URL = os.getenv(
     "API_BASE_URL",
-    "http://localhost:8000"
-)
-
-print("=" * 50)
-print("API URL:", BASE_URL)
-print("=" * 50)
+    "http://127.0.0.1:8000"
+).rstrip("/")
 
 
 def predict_asset(payload: dict) -> dict:
@@ -34,6 +30,7 @@ def check_api_health() -> bool:
     except Exception as e:
         print("API HEALTH CHECK FAILED:", e)
         return False
+
 
 def retrain_model() -> dict:
     response = requests.post(
